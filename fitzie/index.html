@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitzie™ | Fit for the Bold. Streetwear & Activewear</title>
+  
+  <!-- Meta tags for premium SEO -->
+  <meta name="description" content="Your journey to the best physical version of yourself. Join the Fitzie movement. High-end, tactical athletic compression, technical ripstop trousers, and organic heavyweight fleece sweats built to evolve.">
+  <meta property="og:title" content="Fitzie™ | Fit for the Bold.">
+  <meta property="og:description" content="High-end technical activewear and tactical streetwear. Engineered to evolve.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Favicon Mockup -->
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23dc2626%22 font-family=%22sans-serif%22 font-weight=%22bold%22>F</text></svg>" type="image/svg+xml">
+  
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Bootstrap Icons CDN for premium visual marks -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+
+  <!-- ================= WELCOME SCREEN OVERLAY ================= -->
+  <div id="welcome-overlay">
+    <div class="welcome-cursor-glow" id="welcome-cursor-glow"></div>
+    <div class="welcome-content">
+      <div class="welcome-logo">FITZIE<span>.</span></div>
+      <div class="welcome-tagline">Fit for the Bold</div>
+      <button class="enter-btn" id="enter-btn" onclick="this.closest('#welcome-overlay').classList.add('hidden'); this.closest('#welcome-overlay').style.pointerEvents='none'; document.body.style.overflowY='auto'; setTimeout(function(){ var o=document.getElementById('welcome-overlay'); if(o)o.style.display='none'; }, 800);">Enter the Shop</button>
+    </div>
+  </div>
+
+  <!-- ================= ANNOUNCEMENT BAR ================= -->
+  <div class="announcement-bar">
+    ⚡ FREE COMPLIMENTARY SHIPPING WORLDWIDE ON ALL ORDERS OVER $100.00 USD ⚡
+  </div>
+
+  <!-- ================= HERO ANIMATION CANVAS ================= -->
+  <canvas id="hero-canvas"></canvas>
+
+  <!-- ================= HEADER SECTION ================= -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">FITZIE<span>.</span></a>
+      
+      <nav>
+        <ul>
+          <li><a href="#" class="active" data-filter="all">All Gear</a></li>
+          <li><a href="#" data-filter="compression">Tops</a></li>
+          <li><a href="#" data-filter="bottoms">Bottoms</a></li>
+          <li><a href="#" data-filter="hoodies">Jackets</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-actions">
+        <button class="nav-btn" id="cart-open-btn" aria-label="Open Shopping Cart">
+          <i class="bi bi-bag-heart"></i>
+          <span class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-section">
+    <div class="hero-bg-blur"></div>
+    <div class="float-shapes" id="float-shapes"></div>
+    <div class="hero-grid">
+      
+       <div class="hero-text">
+          <span class="hero-badge">FIT FOR THE BOLD / ESSENTIALS</span>
+        <h1 class="hero-title">
+          <span class="hero-word" style="animation-delay: 0.1s">Evolve.</span>
+          <span class="hero-word" style="animation-delay: 0.3s">Elevate.</span>
+          <em class="hero-word" style="animation-delay: 0.5s">Never Compromise.</em>
+        </h1>
+        <p class="hero-description">
+          A premium streetwear collection tailored for daily comfort, outdoor exploration, and minimalist style. Engineered with heavyweight custom knits, rugged ripstop weaves, and sophisticated vintage-inspired silhouettes.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn-primary" id="enter-shop-btn">Shop Cores</button>
+          <button class="btn-secondary" id="hero-shop-btn">Size Finder</button>
+        </div>
+      </div>
+      
+      <div class="hero-image-container">
+        <div class="hero-image-glow"></div>
+        <img class="hero-main-img" src="assets/fitzie_blue_rugby.jpg" alt="Fitzie Apex Rugby Compression Top">
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">450 GSM</span>
+            <span class="stat-lbl">FLEECE DENSITY</span>
+          </div>
+          <div style="width: 1px; background-color: var(--border-color);"></div>
+          <div class="stat-item">
+            <span class="stat-num">RIPSTOP</span>
+            <span class="stat-lbl">FABRIC weave</span>
+          </div>
+          <div style="width: 1px; background-color: var(--border-color);"></div>
+          <div class="stat-item">
+            <span class="stat-num">HERITAGE</span>
+            <span class="stat-lbl">UTILITY CUTS</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- ================= PRODUCT CATALOG SECTION ================= -->
+  <section class="shop-section" id="shop-section">
+    
+    <div class="section-header">
+      <div class="section-info">
+        <span class="section-subtitle">FITZIE collection</span>
+        <h2 class="section-title">THE GEAR VAULT</h2>
+      </div>
+      
+      <!-- Real-time Filter Selector -->
+      <div class="filter-controls">
+        <button class="filter-btn active" data-filter="all">Show All</button>
+        <button class="filter-btn" data-filter="compression">Tops</button>
+        <button class="filter-btn" data-filter="bottoms">Bottoms</button>
+        <button class="filter-btn" data-filter="hoodies">Jackets</button>
+      </div>
+      
+      <!-- Real-time Search Box -->
+      <div class="search-container">
+         <input type="text" class="search-input" id="search-input" placeholder="Search gear (e.g. apex, stealth)...">
+        <i class="bi bi-search search-icon-inside"></i>
+      </div>
+    </div>
+    
+    <!-- Dynamic Product Cards Grid -->
+    <div class="product-grid" id="product-grid">
+      <!-- Static fallback visible if JS fails to load -->
+      <div class="product-card" data-id="apex-rugby">
+        <div class="product-image-wrapper">
+          <span class="product-badge">New In</span>
+          <img class="product-img" src="assets/fitzie_blue_rugby.jpg" alt="Apex Rugby Compression Top">
+        </div>
+        <div class="product-info">
+          <div class="product-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> <span class="rating-text">4.8 (98)</span></div>
+          <h3 class="product-name">Apex Rugby Compression Top</h3>
+          <p class="product-slogan">Performance-fit rugby cut engineered for explosive upper-body movement.</p>
+          <span class="product-price">$44.00</span>
+          <div class="size-selector"><button class="quick-size-btn" data-id="apex-rugby" data-size="S">S</button><button class="quick-size-btn" data-id="apex-rugby" data-size="M">M</button><button class="quick-size-btn" data-id="apex-rugby" data-size="L">L</button><button class="quick-size-btn" data-id="apex-rugby" data-size="XL">XL</button></div>
+          <button class="add-to-cart-btn" data-id="apex-rugby"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card" data-id="stealth-joggers">
+        <div class="product-image-wrapper">
+          <span class="product-badge">New In</span>
+          <img class="product-img" src="assets/fitzie_jogger.jpg" alt="Stealth Tech Joggers">
+        </div>
+        <div class="product-info">
+          <div class="product-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> <span class="rating-text">4.7 (156)</span></div>
+          <h3 class="product-name">Stealth Tech Joggers</h3>
+          <p class="product-slogan">Streamlined technical joggers for urban mobility and daily training.</p>
+          <span class="product-price">$52.00</span>
+          <div class="size-selector"><button class="quick-size-btn" data-id="stealth-joggers" data-size="M">M</button><button class="quick-size-btn" data-id="stealth-joggers" data-size="L">L</button><button class="quick-size-btn" data-id="stealth-joggers" data-size="XL">XL</button><button class="quick-size-btn" data-id="stealth-joggers" data-size="XXL">XXL</button></div>
+          <button class="add-to-cart-btn" data-id="stealth-joggers"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card" data-id="terra-jacket">
+        <div class="product-image-wrapper">
+          <span class="product-badge">New In</span>
+          <img class="product-img" src="assets/fitzie_green_jacket.jpg" alt="Terra Field Shell Jacket">
+        </div>
+        <div class="product-info">
+          <div class="product-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> <span class="rating-text">4.9 (203)</span></div>
+          <h3 class="product-name">Terra Field Shell Jacket</h3>
+          <p class="product-slogan">Weather-ready shell with insulated field pockets and adjustable storm hood.</p>
+          <span class="product-price">$78.00</span>
+          <div class="size-selector"><button class="quick-size-btn" data-id="terra-jacket" data-size="S">S</button><button class="quick-size-btn" data-id="terra-jacket" data-size="M">M</button><button class="quick-size-btn" data-id="terra-jacket" data-size="L">L</button><button class="quick-size-btn" data-id="terra-jacket" data-size="XL">XL</button><button class="quick-size-btn" data-id="terra-jacket" data-size="XXL">XXL</button></div>
+          <button class="add-to-cart-btn" data-id="terra-jacket"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card" data-id="crimson-jacket">
+        <div class="product-image-wrapper">
+          <span class="product-badge">New In</span>
+          <img class="product-img" src="assets/fitzie_red_jacket.jpg" alt="Crimson Trail Jacket">
+        </div>
+        <div class="product-info">
+          <div class="product-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> <span class="rating-text">4.9 (187)</span></div>
+          <h3 class="product-name">Crimson Trail Jacket</h3>
+          <p class="product-slogan">Lightweight trail jacket with breathable mesh lining and zip-off sleeves.</p>
+          <span class="product-price">$72.00</span>
+          <div class="size-selector"><button class="quick-size-btn" data-id="crimson-jacket" data-size="S">S</button><button class="quick-size-btn" data-id="crimson-jacket" data-size="M">M</button><button class="quick-size-btn" data-id="crimson-jacket" data-size="L">L</button><button class="quick-size-btn" data-id="crimson-jacket" data-size="XL">XL</button></div>
+          <button class="add-to-cart-btn" data-id="crimson-jacket"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ================= FIT FINDER BANNER ================= -->
+    <div class="quiz-promo-banner">
+      <div class="quiz-promo-text">
+        <h3>UNSURE ABOUT YOUR <span>PERFECT FIT?</span></h3>
+        <p>
+          Don't let the sizing matrix stop your evolution. Launch our custom sizing algorithm—calculating your size immediately based on height, weight, and wear style.
+        </p>
+      </div>
+      <div class="quiz-promo-cta">
+        <button class="quiz-btn" id="quiz-trigger-btn">
+          Run Sizing Quiz <i class="bi bi-cpu-fill" style="color: var(--bg-dark);"></i>
+        </button>
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- ================= SIDE DRAWERS & BACKDROP ================= -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <!-- Shopping Cart Drawer -->
+  <div class="drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title"><i class="bi bi-bag-check-fill"></i> GEAR SELECTION</h3>
+      <button class="drawer-close" id="cart-close-btn" aria-label="Close Cart"><i class="bi bi-x-lg"></i></button>
+    </div>
+    
+    <!-- Free Shipping Progress Tracker -->
+    <div class="shipping-tracker">
+      <div class="tracker-msg" id="shipping-tracker-msg">
+        <i class="bi bi-truck"></i> ADD GEAR FOR FREE SHIPPING
+      </div>
+      <div class="tracker-bar-bg">
+        <div class="tracker-bar-fill" id="shipping-tracker-fill"></div>
+      </div>
+    </div>
+    
+    <!-- Cart Items list container -->
+    <div class="drawer-content">
+      <!-- Empty message state -->
+      <div class="cart-empty-msg" id="cart-empty-msg">
+        <i class="bi bi-bag-dash"></i>
+        <p style="text-transform: uppercase; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em;">Your vault is currently empty</p>
+        <button class="btn-primary" style="padding: 10px 24px; font-size: 0.75rem;" onclick="document.getElementById('cart-close-btn').click();">BACK TO VAULT</button>
+      </div>
+      
+      <!-- Loaded dynamically via app.js -->
+      <div id="cart-items-list" style="display: flex; flex-direction: column; gap: 24px;"></div>
+    </div>
+    
+    <!-- Checkout subtotals pane -->
+    <div class="drawer-footer" id="cart-summary-block" style="display: none;">
+      <div class="summary-row">
+        <span>Cart Subtotal</span>
+        <span id="cart-subtotal">$0.00</span>
+      </div>
+      <div class="summary-row">
+        <span>Worldwide Shipping</span>
+        <span id="cart-shipping">FREE</span>
+      </div>
+      <div class="summary-row total">
+        <span>TOTAL RECKONING</span>
+        <span id="cart-total">$0.00</span>
+      </div>
+      <button class="checkout-btn" id="cart-checkout-btn">SECURE CHECKOUT — SIMULATION</button>
+    </div>
+  </div>
+
+  <!-- Simulated checkout side drawer (Multi-step) -->
+  <div class="drawer checkout-drawer" id="checkout-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title"><i class="bi bi-shield-lock-fill"></i> SECURE DEPLOYMENT</h3>
+      <button class="drawer-close" id="checkout-close-btn" aria-label="Close Checkout"><i class="bi bi-x-lg"></i></button>
+    </div>
+    
+    <!-- Progress Indicator steps -->
+    <div class="checkout-steps">
+      <div class="step-indicator active">
+        <span class="step-num">1</span> SHIPPING
+      </div>
+      <div class="step-indicator">
+        <span class="step-num">2</span> DEPOSIT
+      </div>
+      <div class="step-indicator">
+        <span class="step-num">3</span> ARRIVED
+      </div>
+    </div>
+    
+    <div class="drawer-content" style="padding: 30px;">
+      
+      <!-- STEP 1: Shipping Details form & region selection -->
+      <div id="checkout-step-1">
+        <h4 style="font-size: 0.95rem; text-transform: uppercase; margin-bottom: 20px; border-left: 2px solid var(--accent-neon); padding-left: 10px;">SHIPPING DIRECTORY</h4>
+        
+        <div class="form-group">
+          <label class="form-label">Full Customer Name</label>
+          <input type="text" class="form-input" id="ship-name" placeholder="John Doe">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Email Address (Order Tracking)</label>
+          <input type="email" class="form-input" id="ship-email" placeholder="john@fitzie.com">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Street Address</label>
+          <input type="text" class="form-input" id="ship-address" placeholder="123 Street Ave, Apartment 4B">
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">City</label>
+            <input type="text" class="form-input" id="ship-city" placeholder="Dhaka">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Zip / Postal Code</label>
+            <input type="text" class="form-input" id="ship-zip" placeholder="1212">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 10px;">
+          <label class="form-label">Delivery Region & Sizing Policy</label>
+          <select class="form-input" id="ship-region" style="height: 48px; background: rgba(255,255,255,0.02); color: var(--text-white);">
+            <option value="inside" style="background: var(--bg-card); color: var(--text-white);">Inside Dhaka (৳80.00 BDT Advance Payment)</option>
+            <option value="outside" style="background: var(--bg-card); color: var(--text-white);">Outside Dhaka (৳150.00 BDT Advance Payment)</option>
+          </select>
+          <span style="font-size: 0.7rem; color: var(--accent-neon); margin-top: 8px; display: block; line-height: 1.4;">
+            ⚠️ **POLICY:** Delivery charges must be paid in advance via bKash/Nagad. Product subtotal is paid as Cash-on-Delivery (COD).
+          </span>
+        </div>
+      </div>
+      
+      <!-- STEP 2: Delivery Charge Wallet Payment details form -->
+      <div id="checkout-step-2" style="display: none;">
+        <h4 style="font-size: 0.95rem; text-transform: uppercase; margin-bottom: 20px; border-left: 2px solid var(--accent-neon); padding-left: 10px;">ADVANCE DELIVERY DEPOSIT</h4>
+        
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;">
+          Please deposit the delivery charge to verify your physical address. Send the exact amount to the personal wallet below.
+        </p>
+
+        <!-- Digital copyable wallet number card -->
+        <div style="background: rgba(255,255,255,0.015); border: 1px solid var(--border-color); border-radius: var(--border-radius-md); padding: 20px; margin-bottom: 24px; position: relative;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">SEND MONEY (PERSONAL) TO</span>
+            <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent-neon); letter-spacing: 0.02em;" id="checkout-charge-badge">৳80 BDT</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; background: var(--bg-dark); border: 1px solid var(--border-color); padding: 12px 20px; border-radius: var(--border-radius-sm);">
+            <strong style="font-size: 1.35rem; letter-spacing: 0.08em; color: white;" id="checkout-payment-num">01606590420</strong>
+            <button type="button" id="copy-payment-num-btn" style="background: var(--accent-neon); border: none; color: var(--bg-dark); font-family: var(--font-title); font-weight: 800; font-size: 0.7rem; padding: 8px 14px; border-radius: var(--border-radius-sm); cursor: pointer; transition: var(--transition-fast);">
+              COPY NUMBER
+            </button>
+          </div>
+        </div>
+        
+        <!-- Bangladesh Mobile Wallets tabs -->
+        <div class="payment-selectors">
+          
+          <div class="payment-option bkash active" data-method="bkash" style="border: 1px solid var(--border-color); padding: 15px; border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: var(--transition-fast); margin-bottom: 12px;">
+            <div class="payment-info-left" style="display: flex; align-items: center; gap: 12px;">
+              <span class="payment-radio"></span>
+              <strong style="font-size: 0.9rem; letter-spacing: 0.02em;">bKash Personal Wallet</strong>
+            </div>
+            <span style="font-size: 0.65rem; background: #e2125d; color: white; font-weight: 700; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;">bKash Active</span>
+          </div>
+          
+          <div class="payment-option nagad" data-method="nagad" style="border: 1px solid var(--border-color); padding: 15px; border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: var(--transition-fast); margin-bottom: 24px;">
+            <div class="payment-info-left" style="display: flex; align-items: center; gap: 12px;">
+              <span class="payment-radio"></span>
+              <strong style="font-size: 0.9rem; letter-spacing: 0.02em;">Nagad Personal Wallet</strong>
+            </div>
+            <span style="font-size: 0.65rem; background: #f26522; color: white; font-weight: 700; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;">Nagad Active</span>
+          </div>
+          
+        </div>
+        
+        <!-- Transaction verification inputs -->
+        <div class="payment-form-box active" id="payment-form-inputs" style="display: block; background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--border-radius-md);">
+          <div class="form-group">
+            <label class="form-label" id="sender-number-label">Sender bKash Wallet Number</label>
+            <input type="text" class="form-input" id="pay-sender" placeholder="01XXXXXXXXX" maxlength="11">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Payment Transaction ID (TxnID)</label>
+            <input type="text" class="form-input" id="pay-txnid" placeholder="e.g. AH73KD92JS" style="text-transform: uppercase;">
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- STEP 3: Order Completed block -->
+      <div id="checkout-step-3" class="success-screen" style="display: none;">
+        <div class="success-icon-wrapper" style="background-color: rgba(160, 160, 160, 0.1); color: var(--accent-cyan);">
+          <i class="bi bi-clock-history"></i>
+        </div>
+        <h3>ORDER REGISTERED</h3>
+        <p>
+          Your order has been registered! Our accounts team is verifying your bKash/Nagad delivery payment. Once verified, your Fitzie gear will ship. You will pay the remaining gear subtotal as Cash-on-Delivery (COD).
+        </p>
+        <button class="btn-primary" style="width: 100%; margin-top: 20px;" onclick="document.getElementById('checkout-close-btn').click();">CONTINUE EVOLVING</button>
+      </div>
+      
+    </div>
+    
+    <!-- Footer summary panel for checkout drawer -->
+    <div class="drawer-footer" style="padding: 24px 30px;">
+      <div class="summary-row" style="margin-bottom: 8px;">
+        <span>Gear Subtotal (COD)</span>
+        <span id="checkout-subtotal-val" style="color: white; font-weight: 600;">$0.00</span>
+      </div>
+      <div class="summary-row" style="margin-bottom: 8px;">
+        <span>Delivery Charge (Paid Now)</span>
+        <span id="checkout-shipping-val" style="color: var(--accent-neon); font-weight: 700;">৳80 BDT</span>
+      </div>
+      <div class="summary-row total" style="margin-top: 10px; padding-top: 10px;">
+        <span>Grand Total (COD)</span>
+        <span id="checkout-total-val" style="color: white; font-weight: 800;">$0.00</span>
+      </div>
+      <button class="checkout-btn" id="checkout-next-btn">CONTINUE TO PAYMENT</button>
+    </div>
+  </div>
+
+  <!-- ================= DYNAMIC PRODUCT DETAILS MODAL ================= -->
+  <div class="modal-overlay" id="details-modal">
+    <div class="modal-container">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close details modal"><i class="bi bi-x-lg"></i></button>
+      
+      <!-- Modal Left side: Large media slider mock -->
+      <div class="modal-gallery">
+        <img class="modal-main-img" id="modal-main-img" src="" alt="Main Product View">
+        <div class="modal-gallery-nav">
+          <span class="gallery-dot active"></span>
+          <span class="gallery-dot"></span>
+        </div>
+      </div>
+      
+      <!-- Modal Right side: Rich gear info panel -->
+      <div class="modal-info-panel">
+        <div class="modal-header">
+          <span class="modal-cat" id="modal-cat"></span>
+          <h2 class="modal-title" id="modal-title"></h2>
+          
+          <div class="modal-price-row">
+            <span class="modal-price" id="modal-price"></span>
+            <span style="font-size: 0.75rem; color: var(--text-muted); border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 4px;">IN STOCK</span>
+          </div>
+        </div>
+        
+        <p class="modal-desc" id="modal-slogan" style="font-weight: 600; color: var(--text-white); margin-bottom: 12px; font-size: 0.95rem;"></p>
+        <p class="modal-desc" id="modal-desc"></p>
+        
+        <!-- Sizing Selector grid inside modal -->
+        <div class="size-selection-block">
+          <div class="size-header-row">
+            <span class="size-title">SELECT WEAR SIZE</span>
+            <span class="size-guide-link" id="size-guide-link">Size Chart Reference</span>
+          </div>
+          <div class="size-options" id="modal-sizes-list">
+            <!-- Injected dynamically via app.js -->
+          </div>
+        </div>
+        
+        <button class="checkout-btn" id="modal-add-to-cart-btn" style="margin-top: 0; padding: 18px 24px;">CHOOSE SIZE FIRST</button>
+        
+        <!-- Specifications technical details toggles -->
+        <div class="specs-accordion">
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(event)">
+              FABRIC STRUCTURE & WEAVE <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p id="spec-fabric-text"></p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(event)">
+              FIT & DYNAMICS PROFILE <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p id="spec-fit-text"></p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(event)">
+              CARE & WASH PRESERVATIONS <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+              <p id="spec-care-text"></p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Size Chart Sub-modal -->
+  <div class="modal-overlay" id="size-guide-modal" style="z-index: 2100;">
+    <div class="modal-container" style="width: 580px; display: block; padding: 40px;">
+      <button class="modal-close" id="size-guide-close" style="top: 20px; right: 20px;"><i class="bi bi-x-lg"></i></button>
+      
+      <h3 style="font-size: 1.5rem; text-transform: uppercase; margin-bottom: 10px; text-align: center;">SIZE CHART <span>REFERENCE</span></h3>
+      <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-bottom: 30px;">Measurements correspond to physical body dimensions. Fit preferences will modify actual silhouette drape.</p>
+      
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th>SIZE TAG</th>
+            <th>CHEST (INCHES)</th>
+            <th>WAIST (INCHES)</th>
+            <th>SLEEVE LENGTH (IN)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight: 700; color: var(--accent-neon);">S</td>
+            <td>34 - 37</td>
+            <td>28 - 31</td>
+            <td>31.5</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700; color: var(--accent-neon);">M</td>
+            <td>38 - 41</td>
+            <td>32 - 35</td>
+            <td>32.5</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700; color: var(--accent-neon);">L</td>
+            <td>42 - 45</td>
+            <td>36 - 39</td>
+            <td>33.5</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700; color: var(--accent-neon);">XL</td>
+            <td>46 - 49</td>
+            <td>40 - 43</td>
+            <td>34.5</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700; color: var(--accent-neon);">XXL</td>
+            <td>50 - 53</td>
+            <td>44 - 47</td>
+            <td>35.5</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 20px; line-height: 1.4; text-align: center;">
+        💡 <strong>PRO TIP:</strong> If you are between dimensions and prefer standard athletic fit order true size, or go one size up for an oversized streetwear look.
+      </p>
+    </div>
+  </div>
+
+  <!-- ================= INTELLIGENT SIZE FINDER QUIZ MODAL ================= -->
+  <div class="modal-overlay" id="quiz-modal">
+    <div class="modal-container quiz-modal">
+      <button class="modal-close" id="quiz-close-btn" aria-label="Close sizing quiz"><i class="bi bi-x-lg"></i></button>
+      
+      <div class="quiz-container">
+        
+        <div class="quiz-header">
+          <h2 class="quiz-modal-title">FITZIE <span>FIT FINDER</span></h2>
+          <p class="quiz-desc">Calculate your recommended apparel sizing based on height, weight, and wear styling.</p>
+        </div>
+        
+        <div class="quiz-step-dots">
+          <span class="quiz-dot active"></span>
+          <span class="quiz-dot"></span>
+          <span class="quiz-dot"></span>
+        </div>
+        
+        <!-- STEP 1: Height range slider -->
+        <div class="quiz-step-pane active" id="quiz-step-1">
+          <h3 style="font-size: 0.95rem; text-align: center; text-transform: uppercase; margin-bottom: 24px;">What is your physical height?</h3>
+          <div class="range-display" id="quiz-height-val">175<span>cm</span></div>
+          
+          <div class="slider-input-wrapper">
+            <input type="range" class="quiz-slider" id="quiz-height-range" min="140" max="210" value="175">
+          </div>
+          
+          <div class="quiz-nav-btns">
+            <button class="quiz-nav-btn next" id="quiz-next-1" style="width: 100%;">CONTINUE TO WEIGHT</button>
+          </div>
+        </div>
+        
+        <!-- STEP 2: Weight range slider -->
+        <div class="quiz-step-pane" id="quiz-step-2">
+          <h3 style="font-size: 0.95rem; text-align: center; text-transform: uppercase; margin-bottom: 24px;">What is your physical weight?</h3>
+          <div class="range-display" id="quiz-weight-val">70<span>kg</span></div>
+          
+          <div class="slider-input-wrapper">
+            <input type="range" class="quiz-slider" id="quiz-weight-range" min="40" max="130" value="70">
+          </div>
+          
+          <div class="quiz-nav-btns">
+            <button class="quiz-nav-btn back" id="quiz-back-2">BACK</button>
+            <button class="quiz-nav-btn next" id="quiz-next-2">CONTINUE TO STYLE</button>
+          </div>
+        </div>
+        
+        <!-- STEP 3: Fit preference chips -->
+        <div class="quiz-step-pane" id="quiz-step-3">
+          <h3 style="font-size: 0.95rem; text-align: center; text-transform: uppercase; margin-bottom: 24px;">How do you prefer your gears to sit?</h3>
+          
+          <div class="quiz-grid">
+            <div class="quiz-option-card active" data-fit="regular">
+              <div>
+                <div class="option-meta-title">Athletic Regular Fit</div>
+                <div class="option-meta-desc">Drapes naturally with muscle profile. True sizing profile.</div>
+              </div>
+              <i class="bi bi-check-circle-fill" style="color: var(--accent-neon);"></i>
+            </div>
+            
+            <div class="quiz-option-card" data-fit="tight">
+              <div>
+                <div class="option-meta-title">Snug Performance Compression</div>
+                <div class="option-meta-desc">Sits skin-tight. Enhances bloodflow & warmth responses.</div>
+              </div>
+              <i class="bi bi-circle"></i>
+            </div>
+            
+            <div class="quiz-option-card" data-fit="oversized">
+              <div>
+                <div class="option-meta-title">Oversized Street slouch</div>
+                <div class="option-meta-desc">Dropped shoulder look. Generous space & street comfort.</div>
+              </div>
+              <i class="bi bi-circle"></i>
+            </div>
+          </div>
+          
+          <div class="quiz-nav-btns">
+            <button class="quiz-nav-btn back" id="quiz-back-3">BACK</button>
+            <button class="quiz-nav-btn next" id="quiz-next-3">REVEAL PERFECT FIT</button>
+          </div>
+        </div>
+        
+        <!-- STEP 4: Size Result Badge output -->
+        <div class="quiz-step-pane" id="quiz-step-4">
+          <div class="quiz-result-frame">
+            <div class="result-msg">YOUR PERFECT FIT IS</div>
+            <div class="result-badge" id="quiz-result-badge">M</div>
+            <p class="result-explanation" id="quiz-result-explanation"></p>
+            
+            <button class="btn-primary" style="margin-top: 30px; width: 100%;" onclick="document.getElementById('quiz-close-btn').click();">BACK TO CATALOG</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER SECTION ================= -->
+  <footer>
+    <div class="footer-container">
+      
+      <!-- Brand statement -->
+      <div class="footer-brand">
+        <h4>FITZIE<span>.</span></h4>
+        <p>Fit for the Bold. Evolve your physical shell and style statement. Join the active streetwear movement today.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Follow us on Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="Follow us on Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-link" aria-label="Follow us on X"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="social-link" aria-label="Follow us on TikTok"><i class="bi bi-tiktok"></i></a>
+        </div>
+      </div>
+      
+      <!-- Shopping catalog navigation quick links -->
+      <div class="footer-links-col">
+        <h5>THE VAULT</h5>
+        <ul>
+          <li><a href="#" onclick="document.querySelector('[data-filter=\'compression\']').click(); document.getElementById('shop-section').scrollIntoView(); return false;">Apex Tops</a></li>
+          <li><a href="#" onclick="document.querySelector('[data-filter=\'bottoms\']').click(); document.getElementById('shop-section').scrollIntoView(); return false;">Stealth Joggers</a></li>
+          <li><a href="#" onclick="document.querySelector('[data-filter=\'hoodies\']').click(); document.getElementById('shop-section').scrollIntoView(); return false;">Field Jackets</a></li>
+        </ul>
+      </div>
+      
+      <!-- Support resources -->
+      <div class="footer-links-col">
+        <h5>RESOURCES</h5>
+        <ul>
+          <li><a href="#" id="footer-quiz-link" onclick="document.getElementById('quiz-trigger-btn').click(); return false;">Size Finder Calculator</a></li>
+          <li><a href="#" onclick="openSizeGuideModal(); return false;">Apparel Size Charts</a></li>
+          <li><a href="#">Simulated Order Tracking</a></li>
+          <li><a href="#">Worldwide Dispatch Policy</a></li>
+        </ul>
+      </div>
+      
+      <!-- Newsletter subscription form -->
+      <div class="footer-newsletter">
+        <h5>JOIN THE MOVEMENT</h5>
+        <p>Receive premium early drops information, athletic catalog releases, and private access codes straight to your inbox.</p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Enter your email address..." required aria-label="Email address for newsletter">
+          <button type="submit" class="newsletter-submit" aria-label="Submit newsletter"><i class="bi bi-chevron-right"></i></button>
+        </form>
+      </div>
+      
+    </div>
+    
+    <!-- Footer bottom bar credits -->
+    <div class="footer-bottom">
+      <p>&copy; 2026 FITZIE™ apparel industries. Fully Simulated Checkout. All Rights Reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#" onclick="openAdminPanel(); return false;">Orders</a>
+        <a href="#">Simulated Privacy</a>
+        <a href="#">Usage License</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast notifications popup anchor -->
+  <div id="toast-container"></div>
+
+  <!-- Cursor glow trail canvas -->
+  <canvas id="cursor-canvas"></canvas>
+
+  <!-- Loading JS core scripts -->
+  <script src="confetti.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

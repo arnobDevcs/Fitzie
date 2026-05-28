@@ -1,0 +1,17 @@
+{
+  "name": "fitzie-store",
+  "version": "1.0.0",
+  "description": "Premium technical athletic activewear and tactical streetwear store.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y http-server -p 3000"
+  },
+  "keywords": [
+    "fitzie",
+    "streetwear",
+    "activewear",
+    "storefront"
+  ],
+  "author": "Antigravity",
+  "license": "ISC"
+}
